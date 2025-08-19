@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from utils.menu import register_menu
+from utils.menu_ids import APP_IDS
 
 @login_required
-@register_menu(label="جستجو عادی", parent="جستجو")
+@register_menu(label="جستجو عادی", parent="app_02")
 def search(request):
    
     context = {
@@ -11,7 +12,7 @@ def search(request):
     return render(request, "app_search/search.html", context)
 
 @login_required
-@register_menu(label="جستجو پیشرفته", parent="جستجو")
+@register_menu(label="جستجو پیشرفته", parent="app_02")
 def search2(request):
    
     context = {
