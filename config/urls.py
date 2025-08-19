@@ -18,13 +18,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
+from .forms import CaptchaLoginForm  
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("dashboard.urls")),
     path("search/", include("app_search.urls")),
-
+    
+    path("captcha/", include("captcha.urls")),
+    
     # login & logout
-    path('accounts/login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+    path("accounts/login/",auth_views.LoginView.as_view(authentication_form=CaptchaLoginForm, template_name='login.html'), name="login"),
     path('accounts/logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
 ]

@@ -32,13 +32,15 @@
         </div>
 
         <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">مرا به خاطر بسپار</label>
-            </div>
+          <div class="col-12">
+                <div class="form-group">
+                {{ form.captcha }}   <!-- کپچا -->
+                </div>
           </div>
-          <div class="col-4">
+        </div>
+
+        <div class="row">
+          <div class="col-6">
             <button type="submit" class="btn btn-primary btn-block">ورود</button>
           </div>
         </div>
