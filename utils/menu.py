@@ -3,11 +3,6 @@ from utils.menu_ids import APP_IDS
 menu_registry = {}
 
 def register_menu(label=None, app_id=None, parent=None):
-    """
-    label: اسم نمایشی منو
-    app_id: ID اپ از APP_IDS
-    parent: اگر داده شود، زیرمنو به آن app_id وصل شود
-    """
     def decorator(func):
         nonlocal label
         display_name = label or func.__name__
