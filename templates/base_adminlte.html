@@ -33,122 +33,58 @@
     </ul>
   </nav>
 
-  <!-- Main Sidebar -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="#" class="brand-link text-center">
-      <span class="brand-text font-weight-light">پنل مدیریتی</span>
-    </a>
+    {% block sidebar %} 
+        <!-- Main Sidebar -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+          <!-- Brand Logo -->
+          <a href="#" class="brand-link text-center">
+            <span class="brand-text font-weight-light">پنل مدیریتی</span>
+          </a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Sidebar -->
+          <div class="sidebar">
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+              <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-          {% for app, menu in menu_registry.items %}
-              {% for item in menu.items %}
-                  {% if item.subitems %}
-                      <li class="nav-item has-treeview menu-open">
-                          <a href="#" class="nav-link ">
-                            <i class="nav-icon fas fa-box"></i>
-                              <p>
-                                  {{ item.label }}
-                                <i class="right fas fa-angle-left"></i>
-                              </p>
-                          </a>
-                          <ul class="nav nav-treeview">
-                              {% for sub in item.subitems %}
-                                  <li class="nav-item">
-                                      <a href="{% url sub.url_name %}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p> {{ sub.label }}</p>
-                                      </a>
-                                    </li>
-                              {% endfor %}
-                          </ul>
-                      </li>
-                  {% else %}
-                        <li class="nav-item">
-                          <a href="{% url item.url_name %}" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>{{ item.label }}</p>
-                          </a>
-                        </li>
-                  {% endif %}
-              {% endfor %}
-          {% endfor %}
+                {% for app, menu in menu_registry.items %}
+                    {% for item in menu.items %}
+                        {% if item.subitems %}
+                            <li class="nav-item has-treeview menu-open">
+                                <a href="#" class="nav-link ">
+                                  <i class="nav-icon fas fa-box"></i>
+                                    <p>
+                                        {{ item.label }}
+                                      <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    {% for sub in item.subitems %}
+                                        <li class="nav-item">
+                                            <a href="{% url sub.url_name %}" class="nav-link">
+                                              <i class="far fa-circle nav-icon"></i>
+                                              <p> {{ sub.label }}</p>
+                                            </a>
+                                          </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% else %}
+                              <li class="nav-item">
+                                <a href="{% url item.url_name %}" class="nav-link active">
+                                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                                  <p>{{ item.label }}</p>
+                                </a>
+                              </li>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
 
-          {% comment %} old menu
-                    <!-- آیتم ساده -->
-                    <li class="nav-item">
-                      <a href="{% url 'dashboard' %}" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>تب اصلی</p>
-                      </a>
-                    </li>
-
-                    <!-- آیتم با زیرمنو -->
-                    <li class="nav-item has-treeview menu-open">
-                      <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-box"></i>
-                        <p>
-                            تب اول
-                          <i class="right fas fa-angle-left"></i>
-                        </p>
-                      </a>
-                      <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                          <a href="{% url 'search' %}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p> زیر تب 1</p>
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p> زیر تب 2 </p>
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p> زیر تب 3 </p>
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-
-                    <!-- آیتم با زیرمنو -->
-                    <li class="nav-item has-treeview">
-                      <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-shopping-cart"></i>
-                        <p>
-                          تب دوم 
-                          <i class="right fas fa-angle-left"></i>
-                        </p>
-                      </a>
-                      <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                          <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p> زیر تب 1 </p>
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p> زیر تب 2 </p>
-                          </a>
-                        </li>
-                      </ul>
-                    </li> 
-          {% endcomment %}
-
-        </ul>
-      </nav>
-    </div>
-  </aside>
+              </ul>
+            </nav>
+          </div>
+        </aside>
+    {% endblock %}
 
   <!-- Content Wrapper -->
   <div class="content-wrapper">
