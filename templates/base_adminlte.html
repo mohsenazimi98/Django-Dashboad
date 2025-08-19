@@ -28,7 +28,7 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">راهنما</a>
+        <a href="{% url 'logout' %}" class="nav-link">راهنما</a>
       </li>
     </ul>
   </nav>
@@ -37,9 +37,21 @@
         <!-- Main Sidebar -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
           <!-- Brand Logo -->
-          <a href="#" class="brand-link text-center">
-            <span class="brand-text font-weight-light">پنل مدیریتی</span>
-          </a>
+          {% if request.user.is_authenticated %}
+                {% if request.user.is_staff %}
+                    <a href="{% url 'admin:index' %}" class="brand-link text-center">
+                        <span class="brand-text font-weight-light">{{ request.user.username }}</span>
+                    </a>
+                {% else %}
+                    <span class="brand-link text-center">
+                        <span class="brand-text font-weight-light">{{ request.user.username }}</span>
+                    </span>
+                {% endif %}
+            {% else %}
+                <a href="#" class="brand-link text-center">
+                    <span class="brand-text font-weight-light">پنل مدیریتی</span>
+                </a>
+            {% endif %}
 
           <!-- Sidebar -->
           <div class="sidebar">
