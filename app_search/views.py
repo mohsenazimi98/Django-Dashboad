@@ -1,14 +1,14 @@
 from django.shortcuts import render
-from utils.menu import is_submenu
+from utils.menu import register_menu
 
-@is_submenu(name="زیرمنو اول")
+@register_menu(label="جستجو عادی", parent="جستجو")
 def search(request):
    
     context = {
     }
     return render(request, "app_search/search.html", context)
 
-@is_submenu(name="زیرمنو دوم")
+@register_menu(label="جستجو پیشرفته", parent="جستجو")
 def search2(request):
    
     context = {
